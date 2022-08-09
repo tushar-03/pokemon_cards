@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Card from './Card';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './Home';
+import React from 'react';
 
 function App() {
+  const [pokemonname, updatepokemon] = React.useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <div className="App">
+
+
+        <Routes>
+
+          <Route path="/" element={<div> <Header /><Home updateName={updatepokemon} name={pokemonname} /></div>} />
+          <Route path="/Card" element={<div><Header /><Card name={pokemonname} /></div>} />
+        </Routes>
+
+      </div>
+    </Router>
   );
 }
 
